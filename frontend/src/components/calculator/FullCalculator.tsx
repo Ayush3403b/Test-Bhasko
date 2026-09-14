@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Zap, IndianRupee, Calendar, Leaf, CheckCircle2, Sparkles, Home, Building2, Factory } from 'lucide-react';
 import { cn, formatINR, formatNumber } from '@/lib/utils';
+import { getApiUrl } from '@/lib/api';
 
 type Step = { id: number; title: string; sub: string };
 const STEPS: Step[] = [
@@ -46,7 +47,7 @@ export default function FullCalculator() {
   const compute = async () => {
     setCalculating(true);
     try {
-      const res = await fetch('/api/calculate', {
+      const res = await fetch(getApiUrl('/api/calculate'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -75,7 +76,7 @@ export default function FullCalculator() {
 
   const submitLead = async () => {
     if (!data.name || !data.phone) return;
-    await fetch('/api/leads', {
+    await fetch(getApiUrl('/api/leads'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import PageHero from '@/components/sections/PageHero';
 import { FadeUp } from '@/components/ui/MotionWrap';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
+import { getApiUrl } from '@/lib/api';
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', city: '', monthlyBill: 5000, segment: 'residential', message: '' });
@@ -11,7 +12,7 @@ export default function ContactPage() {
   const submit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-    await fetch('/api/leads', {
+    await fetch(getApiUrl('/api/leads'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...form, source: 'contact-form' }),
