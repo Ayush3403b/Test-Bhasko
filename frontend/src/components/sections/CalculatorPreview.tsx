@@ -26,7 +26,7 @@ export default function CalculatorPreview() {
 
   return (
     <section className="py-16 md:py-24 bg-[#EAF3E1]/50">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+      <div className="max-w-[1500px] mx-auto px-4 md:px-8">
         <div className="grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-28">
             <FadeUp><div className="eyebrow mb-3">Live Preview</div></FadeUp>

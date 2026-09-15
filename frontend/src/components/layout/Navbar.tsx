@@ -73,9 +73,9 @@ export default function Navbar() {
           scrolled ? 'glass-nav border-b border-[rgba(24,58,42,0.08)] py-3' : 'bg-transparent py-5'
         )}
       >
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8 flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative w-9 h-9">
+        <div className="max-w-[1500px] mx-auto px-4 md:px-8 flex items-center justify-between gap-2 xl:gap-4 flex-nowrap">
+          <Link href="/" className="flex items-center gap-2 group shrink-0">
+            <div className="relative w-9 h-9 shrink-0">
               <div className="absolute inset-0 rounded-full bg-[#F4B942]/20"></div>
               <svg viewBox="0 0 40 40" className="w-9 h-9 relative">
                 <circle cx="20" cy="20" r="8" fill="#F4B942" />
@@ -93,33 +93,33 @@ export default function Navbar() {
                 <path d="M 20 11 A 9 9 0 0 1 20 29" fill="#477A45" opacity="0.35" />
               </svg>
             </div>
-            <div className="flex flex-col leading-none">
-              <span className="text-xl font-bold tracking-[0.18em] text-[#183A2A]">BHASKO</span>
-              <span className="text-[9px] tracking-[0.3em] text-[#477A45] font-medium">SOLAR · CALCULATED</span>
+            <div className="flex flex-col leading-none shrink-0">
+              <span className="text-xl font-bold tracking-[0.18em] text-[#183A2A] whitespace-nowrap">BHASKO</span>
+              <span className="text-[9px] tracking-[0.3em] text-[#477A45] font-medium whitespace-nowrap">SOLAR · CALCULATED</span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 2xl:gap-2 flex-nowrap shrink-0">
             {NAV_ITEMS.map(item => (
               <div
                 key={item.href}
-                className="relative"
+                className="relative shrink-0"
                 onMouseEnter={() => item.children && setHoverGroup(item.href)}
                 onMouseLeave={() => setHoverGroup(null)}
               >
                 <Link
                   href={item.href}
-                  className="px-3 py-2 text-[13px] font-medium text-[#183A2A] hover:text-[#477A45] transition-colors inline-flex items-center gap-1"
+                  className="px-2 xl:px-3 py-2 text-xs xl:text-[13px] 2xl:text-sm font-medium text-[#183A2A] hover:text-[#477A45] transition-colors inline-flex items-center gap-1 whitespace-nowrap shrink-0"
                 >
                   {item.label}
-                  {item.children && <ChevronDown size={14} />}
+                  {item.children && <ChevronDown size={14} className="shrink-0" />}
                 </Link>
                 {item.children && hoverGroup === item.href && (
                   <div className="absolute top-full left-0 pt-2 min-w-[220px]">
                     <div className="bg-white rounded-xl shadow-xl border border-[rgba(24,58,42,0.08)] p-2">
                       {item.children.map(c => (
-                        <Link key={c.href} href={c.href} className="block px-3 py-2 text-sm text-[#183029] hover:bg-[#EAF3E1] rounded-lg transition-colors">
+                        <Link key={c.href} href={c.href} className="block px-3 py-2 text-sm text-[#183029] hover:bg-[#EAF3E1] rounded-lg transition-colors whitespace-nowrap">
                           {c.label}
                         </Link>
                       ))}
@@ -130,24 +130,24 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 xl:gap-3 shrink-0 flex-nowrap">
             <Link
               href="/solar-intelligence/calculator"
-              className="hidden md:inline-flex items-center gap-2 bg-[#477A45] text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-[#3d6a3c] transition-all hover:shadow-lg hover:-translate-y-0.5"
+              className="hidden md:inline-flex items-center gap-2 bg-[#477A45] text-white px-3.5 xl:px-5 py-2 xl:py-2.5 rounded-full text-xs xl:text-sm font-semibold hover:bg-[#3d6a3c] transition-all hover:shadow-lg hover:-translate-y-0.5 whitespace-nowrap shrink-0"
             >
-              <Calculator size={16} />
+              <Calculator size={16} className="shrink-0" />
               CALCULATE SAVINGS
             </Link>
             <a
               href="https://wa.me/919999999999?text=Hi%20Bhasko%2C%20I%27d%20like%20to%20know%20more%20about%20solar."
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#25D366] text-white hover:scale-110 transition-transform"
+              className="hidden md:inline-flex items-center justify-center w-9 h-9 xl:w-10 xl:h-10 rounded-full bg-[#25D366] text-white hover:scale-110 transition-transform shrink-0"
               aria-label="WhatsApp"
             >
               <MessageCircle size={18} />
             </a>
-            <button onClick={() => setMobileOpen(true)} className="lg:hidden w-10 h-10 inline-flex items-center justify-center text-[#183A2A]" aria-label="Menu">
+            <button onClick={() => setMobileOpen(true)} className="lg:hidden w-10 h-10 inline-flex items-center justify-center text-[#183A2A] shrink-0" aria-label="Menu">
               <Menu size={24} />
             </button>
           </div>

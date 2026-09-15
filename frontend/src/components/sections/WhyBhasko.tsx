@@ -16,7 +16,7 @@ const FEATURES = [
 export default function WhyBhasko() {
   return (
     <section className="py-16 md:py-24 bg-[#F4F8EE]">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+      <div className="max-w-[1500px] mx-auto px-4 md:px-8">
         <div className="max-w-3xl mb-12">
           <FadeUp>
             <div className="eyebrow mb-3">Why Bhasko</div>

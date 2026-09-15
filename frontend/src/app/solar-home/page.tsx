@@ -39,7 +39,7 @@ export default function SolarHomePage() {
 
       {/* System sizes */}
       <section className="py-14 md:py-20">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+        <div className="max-w-[1500px] mx-auto px-4 md:px-8">
           <FadeUp>
             <div className="eyebrow mb-3">Choose your size</div>
             <h2 className="heading-section mb-8">Solar systems for every home.</h2>

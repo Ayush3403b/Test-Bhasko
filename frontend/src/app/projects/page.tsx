@@ -18,7 +18,7 @@ export default function ProjectsPage() {
     <>
       <PageHero eyebrow="BHASKO / PROJECTS" title="Real systems." subtitle="A selection of Bhasko installations across homes, businesses and institutions. Names and specific addresses are placeholders pending customer approval." accentPhrase="real numbers." primaryCta={{ label: 'Calculate Similar System', href: '/solar-intelligence/calculator' }} />
       <section className="py-14 md:py-20">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="max-w-[1500px] mx-auto px-4 md:px-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PROJECTS.map((p,i) => (
             <FadeUp key={p.title} delay={i*0.08}>
               <Link href="#" className="block bg-white rounded-3xl overflow-hidden border border-[rgba(24,58,42,0.06)] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all h-full group">

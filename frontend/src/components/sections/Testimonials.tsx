@@ -12,7 +12,7 @@ const QUOTES = [
 export default function Testimonials() {
   return (
     <section className="py-16 md:py-24 bg-[#F4F8EE]">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+      <div className="max-w-[1500px] mx-auto px-4 md:px-8">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <FadeUp><div className="eyebrow mb-3">Customer Stories</div></FadeUp>
           <FadeUp delay={0.1}><h2 className="heading-section">Loved by homeowners and businesses.</h2></FadeUp>

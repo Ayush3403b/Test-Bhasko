@@ -14,7 +14,7 @@ const PROJECTS = [
 export default function ProjectsPreview() {
   return (
     <section className="py-16 md:py-24 bg-[#FFFDF5]">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+      <div className="max-w-[1500px] mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
             <FadeUp><div className="eyebrow mb-3">Recent Projects</div></FadeUp>

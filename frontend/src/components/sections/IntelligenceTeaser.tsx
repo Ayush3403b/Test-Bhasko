@@ -29,7 +29,7 @@ export default function IntelligenceTeaser() {
       <div className="absolute top-20 right-20 w-60 h-60 rounded-full bg-[#F4B942]/20 blur-3xl" />
       <div className="absolute bottom-20 left-20 w-80 h-80 rounded-full bg-[#A8D66D]/15 blur-3xl" />
 
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 relative">
+      <div className="max-w-[1500px] mx-auto px-4 md:px-8 relative">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-4">
             <FadeUp>

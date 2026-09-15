@@ -39,7 +39,7 @@ export default function SolarBusinessPage() {
       />
 
       <section className="py-14 md:py-20">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+        <div className="max-w-[1500px] mx-auto px-4 md:px-8">
           <FadeUp><div className="eyebrow mb-3">Industries we serve</div></FadeUp>
           <FadeUp delay={0.1}><h2 className="heading-section mb-8">Solar for every business.</h2></FadeUp>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">

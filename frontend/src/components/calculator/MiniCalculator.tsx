@@ -28,14 +28,14 @@ export default function MiniCalculator({ compact = false }: { compact?: boolean 
 
   return (
     <div className={cn(
-      'bg-white rounded-3xl p-6 md:p-7 shadow-[0_24px_64px_rgba(24,58,42,0.12)] border border-white',
-      compact ? '' : 'md:p-8'
+      'bg-white rounded-3xl shadow-[0_20px_50px_rgba(24,58,42,0.10)] border border-[rgba(24,58,42,0.06)]',
+      compact ? 'p-5 sm:p-6' : 'p-6 md:p-8'
     )}>
-      <div className="flex items-center gap-2 mb-5">
-        <div className="w-9 h-9 rounded-xl bg-[#477A45]/10 flex items-center justify-center text-[#477A45]"><CalcIcon size={18} /></div>
+      <div className="flex items-center gap-2.5 mb-4">
+        <div className="w-9 h-9 rounded-xl bg-[#477A45]/10 flex items-center justify-center text-[#477A45] shrink-0"><CalcIcon size={18} /></div>
         <div>
           <div className="text-xs font-semibold tracking-widest uppercase text-[#477A45]">Quick Solar Estimate</div>
-          <div className="text-sm text-[#66736B]">Takes 10 seconds — no phone required</div>
+          <div className="text-xs text-[#66736B]">Takes 10 seconds — instant breakdown</div>
         </div>
       </div>
 

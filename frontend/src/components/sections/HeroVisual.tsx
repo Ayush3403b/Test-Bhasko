@@ -3,25 +3,28 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Sun, Leaf, IndianRupee, Clock, Zap } from 'lucide-react';
 
-export default function HeroVisual() {
+import React from 'react';
+
+// House, Tree, Sun & Energy Flow in the gap
+export function HouseIllustration() {
   const reduce = useReducedMotion();
   return (
-    <div className="relative w-full h-full min-h-[500px] flex items-center justify-center">
-      {/* Background gradient sun */}
+    <div className="relative w-full max-w-[320px] sm:max-w-[360px] lg:max-w-none mx-auto flex flex-col items-center justify-center py-4 lg:py-0">
+      {/* Background ambient glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[600px] h-[600px] rounded-full opacity-60" style={{
-          background: 'radial-gradient(circle at center, rgba(244,185,66,0.35) 0%, rgba(244,185,66,0.1) 30%, rgba(168,214,109,0.05) 50%, transparent 70%)',
+        <div className="w-[320px] h-[320px] rounded-full opacity-60" style={{
+          background: 'radial-gradient(circle at center, rgba(244,185,66,0.3) 0%, rgba(244,185,66,0.1) 40%, rgba(168,214,109,0.06) 60%, transparent 75%)',
         }} />
       </div>
 
-      {/* Sun */}
+      {/* Sun rising in the background */}
       <motion.div
         initial={reduce ? undefined : { scale: 0.6, opacity: 0 }}
         animate={reduce ? undefined : { scale: 1, opacity: 1 }}
         transition={{ duration: 1.2, ease: 'easeOut' }}
-        className="absolute top-8 right-12 md:top-4 md:right-8"
+        className="absolute -top-6 right-2 sm:-top-8 sm:right-6 pointer-events-none z-0"
       >
-        <svg width="180" height="180" viewBox="0 0 180 180" className={reduce ? '' : 'animate-sun'} style={{ transformOrigin: '90px 90px' }}>
+        <svg width="120" height="120" viewBox="0 0 180 180" className={reduce ? '' : 'animate-sun'} style={{ transformOrigin: '90px 90px' }}>
           <defs>
             <radialGradient id="sunGrad">
               <stop offset="0%" stopColor="#F4B942" />
@@ -36,99 +39,151 @@ export default function HeroVisual() {
             const y1 = Math.round((90 + Math.sin(a) * 58) * 100) / 100;
             const x2 = Math.round((90 + Math.cos(a) * 72) * 100) / 100;
             const y2 = Math.round((90 + Math.sin(a) * 72) * 100) / 100;
-            return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#F4B942" strokeWidth="3" strokeLinecap="round" opacity="0.7" />;
+            return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#F4B942" strokeWidth="3" strokeLinecap="round" opacity="0.75" />;
           })}
         </svg>
       </motion.div>
 
-      {/* House illustration */}
-      <motion.svg
-        initial={reduce ? undefined : { y: 30, opacity: 0 }}
+      {/* House & Tree Illustration */}
+      <motion.div
+        initial={reduce ? undefined : { y: 20, opacity: 0 }}
         animate={reduce ? undefined : { y: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 0.3 }}
-        viewBox="0 0 500 400"
-        className="relative z-10 w-full max-w-lg drop-shadow-2xl"
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="relative z-10 w-full drop-shadow-xl"
       >
-        {/* Ground */}
-        <ellipse cx="250" cy="370" rx="200" ry="20" fill="#477A45" opacity="0.15" />
+        <svg viewBox="0 0 500 340" className="w-full">
+          {/* Ground */}
+          <ellipse cx="250" cy="310" rx="210" ry="16" fill="#477A45" opacity="0.18" />
 
-        {/* House */}
-        <path d="M 130 240 L 130 340 L 370 340 L 370 240 Z" fill="#FFFDF5" stroke="#183A2A" strokeWidth="2" />
-        <path d="M 110 240 L 250 140 L 390 240 Z" fill="#183A2A" stroke="#183A2A" strokeWidth="2" />
-        <rect x="220" y="270" width="60" height="70" fill="#F4B942" stroke="#183A2A" strokeWidth="2" rx="4" />
-        <rect x="155" y="265" width="40" height="35" fill="#EAF3E1" stroke="#183A2A" strokeWidth="2" rx="2" />
-        <rect x="305" y="265" width="40" height="35" fill="#EAF3E1" stroke="#183A2A" strokeWidth="2" rx="2" />
-        <line x1="175" y1="265" x2="175" y2="300" stroke="#183A2A" strokeWidth="1.5" />
-        <line x1="155" y1="282" x2="195" y2="282" stroke="#183A2A" strokeWidth="1.5" />
-        <line x1="325" y1="265" x2="325" y2="300" stroke="#183A2A" strokeWidth="1.5" />
-        <line x1="305" y1="282" x2="345" y2="282" stroke="#183A2A" strokeWidth="1.5" />
+          {/* House body */}
+          <path d="M 140 190 L 140 290 L 360 290 L 360 190 Z" fill="#FFFDF5" stroke="#183A2A" strokeWidth="2.5" />
+          
+          {/* House roof */}
+          <path d="M 115 190 L 250 95 L 385 190 Z" fill="#183A2A" stroke="#183A2A" strokeWidth="2.5" />
+          
+          {/* Door */}
+          <rect x="222" y="220" width="56" height="70" fill="#F4B942" stroke="#183A2A" strokeWidth="2" rx="4" />
+          <circle cx="232" cy="255" r="2.5" fill="#183A2A" />
 
-        {/* Solar panels on roof */}
-        <g>
-          {[0, 1, 2].map(i => (
-            <g key={i} transform={`translate(${160 + i * 58}, 190) rotate(-35)`}>
-              <rect x="0" y="0" width="50" height="34" fill="#477A45" stroke="#183A2A" strokeWidth="2" rx="2" />
-              <line x1="25" y1="0" x2="25" y2="34" stroke="#183A2A" strokeWidth="1" />
-              <line x1="0" y1="17" x2="50" y2="17" stroke="#183A2A" strokeWidth="1" />
-              <rect x="2" y="2" width="21" height="13" fill="#A8D66D" opacity="0.3" />
-            </g>
-          ))}
-        </g>
-        <g>
-          {[0, 1, 2].map(i => (
-            <g key={`r-${i}`} transform={`translate(${176 + i * 58}, 176) rotate(35)`}>
-              <rect x="0" y="0" width="50" height="34" fill="#477A45" stroke="#183A2A" strokeWidth="2" rx="2" />
-              <line x1="25" y1="0" x2="25" y2="34" stroke="#183A2A" strokeWidth="1" />
-              <line x1="0" y1="17" x2="50" y2="17" stroke="#183A2A" strokeWidth="1" />
-              <rect x="2" y="2" width="21" height="13" fill="#A8D66D" opacity="0.3" />
-            </g>
-          ))}
-        </g>
+          {/* Windows */}
+          <rect x="160" y="215" width="40" height="35" fill="#EAF3E1" stroke="#183A2A" strokeWidth="2" rx="3" />
+          <line x1="180" y1="215" x2="180" y2="250" stroke="#183A2A" strokeWidth="1.5" />
+          <line x1="160" y1="232" x2="200" y2="232" stroke="#183A2A" strokeWidth="1.5" />
 
-        {/* Tree */}
-        <g>
-          <rect x="60" y="290" width="8" height="50" fill="#6b4423" />
-          <circle cx="64" cy="280" r="30" fill="#477A45" />
-          <circle cx="50" cy="275" r="22" fill="#A8D66D" />
-          <circle cx="78" cy="275" r="22" fill="#477A45" />
-        </g>
+          <rect x="300" y="215" width="40" height="35" fill="#EAF3E1" stroke="#183A2A" strokeWidth="2" rx="3" />
+          <line x1="320" y1="215" x2="320" y2="250" stroke="#183A2A" strokeWidth="1.5" />
+          <line x1="300" y1="232" x2="340" y2="232" stroke="#183A2A" strokeWidth="1.5" />
 
-        {/* Energy flow particles */}
-        {!reduce && (
+          {/* Solar panels on roof */}
           <g>
-            {[0, 1, 2, 3].map(i => (
-              <motion.circle
-                key={i}
-                r="3"
-                fill="#F4B942"
-                initial={{ x: 250, y: 200, opacity: 0 }}
-                animate={{
-                  x: [250, 250, 100 + i * 80, 250],
-                  y: [200, 150, 300 + i * 10, 360],
-                  opacity: [0, 1, 1, 0],
-                }}
-                transition={{ duration: 4, delay: i * 0.9, repeat: Infinity, ease: 'linear' }}
-              />
+            {[0, 1, 2].map(i => (
+              <g key={i} transform={`translate(${160 + i * 54}, 145) rotate(-35)`}>
+                <rect x="0" y="0" width="46" height="30" fill="#477A45" stroke="#183A2A" strokeWidth="2" rx="2" />
+                <line x1="23" y1="0" x2="23" y2="30" stroke="#183A2A" strokeWidth="1" />
+                <line x1="0" y1="15" x2="46" y2="15" stroke="#183A2A" strokeWidth="1" />
+                <rect x="2" y="2" width="19" height="11" fill="#A8D66D" opacity="0.45" />
+              </g>
             ))}
           </g>
-        )}
-      </motion.svg>
+          <g>
+            {[0, 1, 2].map(i => (
+              <g key={`r-${i}`} transform={`translate(${178 + i * 54}, 132) rotate(35)`}>
+                <rect x="0" y="0" width="46" height="30" fill="#477A45" stroke="#183A2A" strokeWidth="2" rx="2" />
+                <line x1="23" y1="0" x2="23" y2="30" stroke="#183A2A" strokeWidth="1" />
+                <line x1="0" y1="15" x2="46" y2="15" stroke="#183A2A" strokeWidth="1" />
+                <rect x="2" y="2" width="19" height="11" fill="#A8D66D" opacity="0.45" />
+              </g>
+            ))}
+          </g>
 
-      {/* Floating cards */}
-      <FloatCard delay={0.3} className="top-8 left-0 md:left-4 bg-white" icon={<Zap size={14} />} iconBg="bg-[#F4B942]/20 text-[#B8860B]" label="Recommended">
-        <div className="text-xl font-bold text-[#183A2A]">5 kW</div>
+          {/* Tree beside house */}
+          <g>
+            <rect x="65" y="230" width="10" height="60" fill="#6b4423" rx="2" />
+            <circle cx="70" cy="215" r="32" fill="#477A45" />
+            <circle cx="54" cy="208" r="24" fill="#A8D66D" />
+            <circle cx="86" cy="208" r="24" fill="#477A45" />
+          </g>
+
+          {/* Bush on right */}
+          <g>
+            <circle cx="415" cy="275" r="18" fill="#477A45" opacity="0.85" />
+            <circle cx="430" cy="278" r="14" fill="#A8D66D" />
+          </g>
+        </svg>
+      </motion.div>
+
+      {/* Energy flow particles moving towards the right */}
+      {!reduce && (
+        <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+          {[0, 1, 2, 3].map(i => (
+            <motion.div
+              key={i}
+              className="absolute w-2.5 h-2.5 rounded-full bg-[#F4B942]"
+              initial={{ top: '20%', left: `${30 + i * 15}%`, opacity: 0 }}
+              animate={{
+                top: ['20%', '50%', '80%'],
+                left: [`${30 + i * 15}%`, `${50 + i * 10}%`, `${75 + i * 8}%`],
+                opacity: [0, 0.95, 0],
+                scale: [0.8, 1.3, 0.5],
+              }}
+              transition={{ duration: 3.5, delay: i * 0.8, repeat: Infinity, ease: 'easeInOut' }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Calculator Frame with the 4 floating cards
+export default function HeroVisual({ children }: { children?: React.ReactNode }) {
+  return (
+    <div className="relative w-full">
+      {children}
+
+      {/* 4 Floating Badges surrounding the Calculator */}
+      {/* Top Left: 5 kW Recommended */}
+      <FloatCard
+        delay={0.3}
+        className="-top-4 -left-2 sm:-top-5 sm:-left-6 bg-white/95 backdrop-blur-md"
+        icon={<Zap size={14} />}
+        iconBg="bg-[#F4B942]/20 text-[#B8860B]"
+        label="Recommended"
+      >
+        <div className="text-sm sm:text-base font-bold text-[#183A2A]">5 kW</div>
       </FloatCard>
 
-      <FloatCard delay={0.5} className="bottom-32 left-0 md:-left-4 bg-[#183A2A] text-white" icon={<IndianRupee size={14} />} iconBg="bg-[#A8D66D]/30 text-[#A8D66D]" label="Est. Monthly Savings">
-        <div className="text-xl font-bold">₹4,820</div>
+      {/* Bottom Left: Est. Monthly Savings ₹4,820 */}
+      <FloatCard
+        delay={0.5}
+        className="-bottom-4 -left-2 sm:-bottom-5 sm:-left-6 bg-[#183A2A]/95 text-white backdrop-blur-md shadow-2xl"
+        icon={<IndianRupee size={14} />}
+        iconBg="bg-[#A8D66D]/30 text-[#A8D66D]"
+        label="Est. Monthly Savings"
+      >
+        <div className="text-sm sm:text-base font-bold text-white">₹4,820</div>
       </FloatCard>
 
-      <FloatCard delay={0.7} className="top-24 right-0 md:right-0 bg-white" icon={<Leaf size={14} />} iconBg="bg-[#477A45]/10 text-[#477A45]" label="Roof Suitability">
-        <div className="text-xl font-bold text-[#183A2A]">87%</div>
+      {/* Top Right: Roof Suitability 87% */}
+      <FloatCard
+        delay={0.7}
+        className="top-10 -right-2 sm:top-12 sm:-right-6 bg-white/95 backdrop-blur-md"
+        icon={<Leaf size={14} />}
+        iconBg="bg-[#477A45]/10 text-[#477A45]"
+        label="Roof Suitability"
+      >
+        <div className="text-sm sm:text-base font-bold text-[#183A2A]">87%</div>
       </FloatCard>
 
-      <FloatCard delay={0.9} className="bottom-16 right-4 md:right-0 bg-white" icon={<Clock size={14} />} iconBg="bg-[#A8D66D]/20 text-[#477A45]" label="Payback">
-        <div className="text-xl font-bold text-[#183A2A]">4.2 yrs</div>
+      {/* Bottom Right: Payback 4.2 yrs */}
+      <FloatCard
+        delay={0.9}
+        className="-bottom-4 -right-2 sm:-bottom-4 sm:-right-6 bg-white/95 backdrop-blur-md"
+        icon={<Clock size={14} />}
+        iconBg="bg-[#A8D66D]/20 text-[#477A45]"
+        label="Payback"
+      >
+        <div className="text-sm sm:text-base font-bold text-[#183A2A]">4.2 yrs</div>
       </FloatCard>
     </div>
   );
@@ -142,13 +197,13 @@ function FloatCard({ children, className, icon, iconBg, label, delay }: any) {
       animate={reduce ? undefined : { opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
       className={
-        'absolute rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 border border-[rgba(24,58,42,0.06)] ' +
+        'absolute z-30 rounded-2xl shadow-xl px-3 py-2 sm:px-4 sm:py-2.5 flex items-center gap-2 sm:gap-3 border border-[rgba(24,58,42,0.08)] ' +
         (reduce ? '' : 'animate-float-slow ') + className
       }
     >
-      <div className={'w-8 h-8 rounded-full flex items-center justify-center ' + iconBg}>{icon}</div>
+      <div className={'w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 ' + iconBg}>{icon}</div>
       <div>
-        <div className="text-[10px] uppercase tracking-widest opacity-70 font-medium">{label}</div>
+        <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-70 font-medium whitespace-nowrap">{label}</div>
         {children}
       </div>
     </motion.div>

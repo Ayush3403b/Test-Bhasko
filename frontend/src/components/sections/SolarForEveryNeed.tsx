@@ -19,7 +19,7 @@ const SEGMENTS = [
 export default function SolarForEveryNeed() {
   return (
     <section className="py-16 md:py-24 bg-[#F4F8EE]">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+      <div className="max-w-[1500px] mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
           <div>
             <FadeUp><div className="eyebrow mb-3">Solar for every need</div></FadeUp>

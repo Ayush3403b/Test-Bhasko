@@ -15,7 +15,7 @@ const STATS = [
 export default function TrustStrip() {
   return (
     <section className="py-12 md:py-16 bg-[#EAF3E1]/60 border-y border-[rgba(24,58,42,0.06)]">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+      <div className="max-w-[1500px] mx-auto px-4 md:px-8">
         <div className="text-center mb-8">
           <div className="text-xs font-semibold tracking-[0.2em] uppercase text-[#477A45] mb-2">Trusted across India</div>
           <div className="text-xs text-[#66736B] italic">Numbers shown will update after launch. Using bracketed placeholders for content integrity.</div>
