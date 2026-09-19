@@ -1,19 +1,18 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
-import { Sun, Leaf, IndianRupee, Clock, Zap } from 'lucide-react';
-
 import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { Sun, Leaf, Zap, ShieldCheck, Sparkles } from 'lucide-react';
 
-// House, Tree, Sun & Energy Flow in the gap
+// House, Tree, Sun & Energy Flow Illustration
 export function HouseIllustration() {
   const reduce = useReducedMotion();
   return (
-    <div className="relative w-full max-w-[320px] sm:max-w-[360px] lg:max-w-none mx-auto flex flex-col items-center justify-center py-4 lg:py-0">
+    <div className="relative w-full max-w-[320px] sm:max-w-[360px] mx-auto flex flex-col items-center justify-center py-4">
       {/* Background ambient glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-[320px] h-[320px] rounded-full opacity-60" style={{
-          background: 'radial-gradient(circle at center, rgba(244,185,66,0.3) 0%, rgba(244,185,66,0.1) 40%, rgba(168,214,109,0.06) 60%, transparent 75%)',
+          background: 'radial-gradient(circle at center, rgba(244,185,66,0.25) 0%, rgba(244,185,66,0.08) 40%, rgba(168,214,109,0.05) 60%, transparent 75%)',
         }} />
       </div>
 
@@ -24,7 +23,7 @@ export function HouseIllustration() {
         transition={{ duration: 1.2, ease: 'easeOut' }}
         className="absolute -top-6 right-2 sm:-top-8 sm:right-6 pointer-events-none z-0"
       >
-        <svg width="120" height="120" viewBox="0 0 180 180" className={reduce ? '' : 'animate-sun'} style={{ transformOrigin: '90px 90px' }}>
+        <svg width="110" height="110" viewBox="0 0 180 180" className={reduce ? '' : 'animate-sun'} style={{ transformOrigin: '90px 90px' }}>
           <defs>
             <radialGradient id="sunGrad">
               <stop offset="0%" stopColor="#F4B942" />
@@ -111,101 +110,55 @@ export function HouseIllustration() {
           </g>
         </svg>
       </motion.div>
-
-      {/* Energy flow particles moving towards the right */}
-      {!reduce && (
-        <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
-          {[0, 1, 2, 3].map(i => (
-            <motion.div
-              key={i}
-              className="absolute w-2.5 h-2.5 rounded-full bg-[#F4B942]"
-              initial={{ top: '20%', left: `${30 + i * 15}%`, opacity: 0 }}
-              animate={{
-                top: ['20%', '50%', '80%'],
-                left: [`${30 + i * 15}%`, `${50 + i * 10}%`, `${75 + i * 8}%`],
-                opacity: [0, 0.95, 0],
-                scale: [0.8, 1.3, 0.5],
-              }}
-              transition={{ duration: 3.5, delay: i * 0.8, repeat: Infinity, ease: 'easeInOut' }}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 }
 
-// Calculator Frame with the 4 floating cards
+// Clean Calculator Frame with Ambient Aura & Non-Intrusive Floating Chips
 export default function HeroVisual({ children }: { children?: React.ReactNode }) {
-  return (
-    <div className="relative w-full">
-      {children}
-
-      {/* 4 Floating Badges surrounding the Calculator */}
-      {/* Top Left: 5 kW Recommended */}
-      <FloatCard
-        delay={0.3}
-        className="-top-4 -left-2 sm:-top-5 sm:-left-6 bg-white/95 backdrop-blur-md"
-        icon={<Zap size={14} />}
-        iconBg="bg-[#F4B942]/20 text-[#B8860B]"
-        label="Recommended"
-      >
-        <div className="text-sm sm:text-base font-bold text-[#183A2A]">5 kW</div>
-      </FloatCard>
-
-      {/* Bottom Left: Est. Monthly Savings ₹4,820 */}
-      <FloatCard
-        delay={0.5}
-        className="-bottom-4 -left-2 sm:-bottom-5 sm:-left-6 bg-[#183A2A]/95 text-white backdrop-blur-md shadow-2xl"
-        icon={<IndianRupee size={14} />}
-        iconBg="bg-[#A8D66D]/30 text-[#A8D66D]"
-        label="Est. Monthly Savings"
-      >
-        <div className="text-sm sm:text-base font-bold text-white">₹4,820</div>
-      </FloatCard>
-
-      {/* Top Right: Roof Suitability 87% */}
-      <FloatCard
-        delay={0.7}
-        className="top-10 -right-2 sm:top-12 sm:-right-6 bg-white/95 backdrop-blur-md"
-        icon={<Leaf size={14} />}
-        iconBg="bg-[#477A45]/10 text-[#477A45]"
-        label="Roof Suitability"
-      >
-        <div className="text-sm sm:text-base font-bold text-[#183A2A]">87%</div>
-      </FloatCard>
-
-      {/* Bottom Right: Payback 4.2 yrs */}
-      <FloatCard
-        delay={0.9}
-        className="-bottom-4 -right-2 sm:-bottom-4 sm:-right-6 bg-white/95 backdrop-blur-md"
-        icon={<Clock size={14} />}
-        iconBg="bg-[#A8D66D]/20 text-[#477A45]"
-        label="Payback"
-      >
-        <div className="text-sm sm:text-base font-bold text-[#183A2A]">4.2 yrs</div>
-      </FloatCard>
-    </div>
-  );
-}
-
-function FloatCard({ children, className, icon, iconBg, label, delay }: any) {
   const reduce = useReducedMotion();
+
   return (
-    <motion.div
-      initial={reduce ? undefined : { opacity: 0, scale: 0.9, y: 20 }}
-      animate={reduce ? undefined : { opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
-      className={
-        'absolute z-30 rounded-2xl shadow-xl px-3 py-2 sm:px-4 sm:py-2.5 flex items-center gap-2 sm:gap-3 border border-[rgba(24,58,42,0.08)] ' +
-        (reduce ? '' : 'animate-float-slow ') + className
-      }
-    >
-      <div className={'w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 ' + iconBg}>{icon}</div>
-      <div>
-        <div className="text-[9px] sm:text-[10px] uppercase tracking-widest opacity-70 font-medium whitespace-nowrap">{label}</div>
+    <div className="relative w-full max-w-[500px] mx-auto">
+      {/* Background Soft Glow Aura */}
+      <div className="absolute -inset-4 bg-gradient-to-tr from-[#A8D66D]/20 via-[#F4B942]/15 to-[#477A45]/15 rounded-[40px] blur-2xl -z-10 pointer-events-none" />
+
+      {/* Top-Right Floating Badge: PM Surya Ghar Ready */}
+      <motion.div
+        initial={reduce ? undefined : { opacity: 0, y: -15, scale: 0.9 }}
+        animate={reduce ? undefined : { opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.4 }}
+        className="absolute -top-4 -right-2 sm:-top-5 sm:-right-4 z-20 hidden sm:flex items-center gap-2.5 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-[0_10px_25px_rgba(24,58,42,0.10)] border border-[rgba(24,58,42,0.08)] pointer-events-none"
+      >
+        <div className="w-7 h-7 rounded-xl bg-[#F4B942]/20 text-[#B8860B] flex items-center justify-center shrink-0">
+          <Sparkles size={14} />
+        </div>
+        <div>
+          <div className="text-[9px] uppercase tracking-wider text-[#66736B] font-semibold leading-none">PM Surya Ghar</div>
+          <div className="text-xs font-bold text-[#183A2A] leading-tight mt-0.5">₹78,000 Subsidy Ready</div>
+        </div>
+      </motion.div>
+
+      {/* Main Content (Calculator) */}
+      <div className="relative z-10">
         {children}
       </div>
-    </motion.div>
+
+      {/* Bottom-Left Floating Badge: High Accuracy AI */}
+      <motion.div
+        initial={reduce ? undefined : { opacity: 0, y: 15, scale: 0.9 }}
+        animate={reduce ? undefined : { opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.6 }}
+        className="absolute -bottom-4 -left-2 sm:-bottom-5 sm:-left-4 z-20 hidden sm:flex items-center gap-2.5 bg-[#183A2A]/95 text-white backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-[0_15px_30px_rgba(24,58,42,0.20)] border border-white/10 pointer-events-none"
+      >
+        <div className="w-7 h-7 rounded-xl bg-[#A8D66D]/25 text-[#A8D66D] flex items-center justify-center shrink-0">
+          <ShieldCheck size={14} />
+        </div>
+        <div>
+          <div className="text-[9px] uppercase tracking-wider text-[#A8D66D] font-semibold leading-none">Feasibility</div>
+          <div className="text-xs font-bold text-white leading-tight mt-0.5">Tier-1 Precision Sizing</div>
+        </div>
+      </motion.div>
+    </div>
   );
 }
