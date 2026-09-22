@@ -10,7 +10,7 @@ export default function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden gradient-sun pt-8 md:pt-12 pb-16 md:pb-24">
+    <section className="relative overflow-hidden gradient-sun pt-6 md:pt-10 pb-12 md:pb-18">
       {/* Decorative organic shape */}
       <svg className="absolute top-0 right-0 w-[800px] opacity-30 pointer-events-none" viewBox="0 0 800 800">
         <path d="M 700,100 Q 800,300 600,500 T 400,700 Q 200,500 400,300 T 700,100 Z" fill="#A8D66D" opacity="0.2" />
