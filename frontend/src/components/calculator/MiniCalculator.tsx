@@ -2,16 +2,16 @@
 
 import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-import { 
-  Zap, 
+import {
+  Zap,
   Leaf,
   Clock,
   Calculator,
-  ArrowRight, 
-  Loader2, 
-  Home, 
-  Building2, 
-  Factory, 
+  ArrowRight,
+  Loader2,
+  Home,
+  Building2,
+  Factory,
   ChevronDown
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -66,6 +66,7 @@ export default function MiniCalculator({ compact = false }: { compact?: boolean 
   return (
     <div className="relative w-full max-w-[480px] mx-auto pt-6 pb-6">
       {/* Floating Tag 1: RECOMMENDED (Top-Left, positioned slightly above calculator) */}
+      {/* 
       <div className="absolute -top-3 sm:-top-4 left-0 sm:-left-3 z-20 bg-white/95 backdrop-blur-md rounded-[18px] sm:rounded-[20px] px-3.5 sm:px-4 py-2 sm:py-2.5 shadow-[0_12px_32px_rgba(24,58,42,0.12)] border border-[rgba(24,58,42,0.06)] flex items-center gap-2.5 sm:gap-3 transition-transform hover:-translate-y-0.5">
         <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FEF6E6] flex items-center justify-center text-[#E59819] shrink-0">
           <Zap size={16} className="fill-[#E59819] text-[#E59819]" />
@@ -75,8 +76,10 @@ export default function MiniCalculator({ compact = false }: { compact?: boolean 
           <div className="text-sm sm:text-base font-extrabold text-[#183A2A] leading-tight">{stats.recommendedCapacity} kW</div>
         </div>
       </div>
+      */}
 
       {/* Floating Tag 2: ROOF SUITABILITY (Top-Right, positioned slightly above calculator) */}
+      {/* 
       <div className="absolute -top-1 sm:-top-2 right-0 sm:-right-3 z-20 bg-white/95 backdrop-blur-md rounded-[18px] sm:rounded-[20px] px-3.5 sm:px-4 py-2 sm:py-2.5 shadow-[0_12px_32px_rgba(24,58,42,0.12)] border border-[rgba(24,58,42,0.06)] flex items-center gap-2.5 sm:gap-3 transition-transform hover:-translate-y-0.5">
         <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#EAF3E1] flex items-center justify-center text-[#477A45] shrink-0">
           <Leaf size={16} className="text-[#477A45]" />
@@ -86,8 +89,10 @@ export default function MiniCalculator({ compact = false }: { compact?: boolean 
           <div className="text-sm sm:text-base font-extrabold text-[#183A2A] leading-tight">87%</div>
         </div>
       </div>
+      */}
 
       {/* Floating Tag 3: EST. MONTHLY SAVINGS (Bottom-Left) */}
+      {/* 
       <div className="absolute -bottom-2 sm:-bottom-3 left-0 sm:-left-3 z-20 bg-[#183A2A] rounded-[18px] sm:rounded-[20px] px-3.5 sm:px-4 py-2 sm:py-2.5 shadow-[0_14px_36px_rgba(24,58,42,0.28)] flex items-center gap-2.5 sm:gap-3 transition-transform hover:-translate-y-0.5">
         <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#244E3A] flex items-center justify-center text-[#A8D66D] font-bold text-sm sm:text-base shrink-0">
           ₹
@@ -97,8 +102,10 @@ export default function MiniCalculator({ compact = false }: { compact?: boolean 
           <div className="text-sm sm:text-base font-extrabold text-white leading-tight">₹{Math.round(stats.monthlySavings).toLocaleString('en-IN')}</div>
         </div>
       </div>
+      */}
 
       {/* Floating Tag 4: PAYBACK (Bottom-Right) */}
+      {/* 
       <div className="absolute -bottom-2 sm:-bottom-3 right-0 sm:-right-3 z-20 bg-white/95 backdrop-blur-md rounded-[18px] sm:rounded-[20px] px-3.5 sm:px-4 py-2 sm:py-2.5 shadow-[0_12px_32px_rgba(24,58,42,0.12)] border border-[rgba(24,58,42,0.06)] flex items-center gap-2.5 sm:gap-3 transition-transform hover:-translate-y-0.5">
         <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#EAF3E1] flex items-center justify-center text-[#477A45] shrink-0">
           <Clock size={16} className="text-[#477A45]" />
@@ -108,6 +115,7 @@ export default function MiniCalculator({ compact = false }: { compact?: boolean 
           <div className="text-sm sm:text-base font-extrabold text-[#183A2A] leading-tight">{stats.paybackPeriodYears || 4.2} yrs</div>
         </div>
       </div>
+      */}
 
       {/* Main Card Container */}
       <div className={cn(
@@ -135,7 +143,7 @@ export default function MiniCalculator({ compact = false }: { compact?: boolean 
             <label className="block text-xs sm:text-sm font-semibold text-[#54685C] mb-2">
               Monthly Electricity Bill
             </label>
-            
+
             <div className="bg-[#F1F6EC] rounded-2xl px-4 py-3 sm:py-3.5 flex items-center gap-2.5 focus-within:ring-2 focus-within:ring-[#477A45]/30 transition-all">
               <span className="text-xl sm:text-2xl font-bold text-[#183A2A]">₹</span>
               <input
